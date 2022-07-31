@@ -72,7 +72,8 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex';
+import { mapActions, mapState } from 'pinia';
+import useAuthStore from '@/store/auth';
 import RegisterForm from './RegisterForm.vue';
 import LoginForm from './LoginForm.vue';
 
@@ -88,10 +89,10 @@ export default {
     };
   },
   computed: {
-    ...mapState(['authModalShow']),
+    ...mapState(useAuthStore, ['authModalShow']),
   },
   methods: {
-    ...mapMutations(['toggleAuthModal']),
+    ...mapActions(useAuthStore, ['toggleAuthModal']),
   },
 };
 </script>
